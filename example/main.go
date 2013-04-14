@@ -82,7 +82,7 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-
+	return
 	_, err = db.Exec("insert into foo(id, name) values(1, 'foo'), (2, 'bar'), (3, 'baz')")
 	if err != nil {
 		fmt.Println(err)
