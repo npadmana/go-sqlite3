@@ -4,3 +4,5 @@ include/
 share/
 sqlite-autoconf-3071601/
 
+*.sublime-workspace
+example/foo.db

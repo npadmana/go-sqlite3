@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/npadmana/myWork/gocode/src/github.com/npadmana/go-sqlite3",
+			"folder_exclude_patterns": ["bin","include","lib","old","sqlite-autoconf*","share"],
+			"file_exclude_patterns": [".travis.yml","*.tar.gz"]	
+		}
+	]
+}
