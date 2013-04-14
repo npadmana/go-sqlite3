@@ -15,6 +15,7 @@ func main() {
 		fmt.Println(err)
 		return
 	}
+	defer os.Remove("./foo.db")
 	defer db.Close()
 
 	sqls := []string{
@@ -82,11 +83,19 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	return
-	_, err = db.Exec("insert into foo(id, name) values(1, 'foo'), (2, 'bar'), (3, 'baz')")
-	if err != nil {
-		fmt.Println(err)
-		return
+
+	// _, err = db.Exec("insert into foo(id, name) values(1, 'foo'), (2, 'bar'), (3, 'baz')")
+	sqls = []string{
+		"insert into foo(id, name) values(1, 'foo')",
+		"insert into foo(id, name) values(2, 'bar')",
+		"insert into foo(id, name) values(3, 'baz')",
+	}
+	for _, sql := range sqls {
+		_, err = db.Exec(sql)
+		if err != nil {
+			fmt.Printf("%q: %s\n", err, sql)
+			return
+		}
 	}
 
 	rows, err = db.Query("select id, name from foo")
